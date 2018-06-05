@@ -10,9 +10,11 @@ namespace Bank.Controllers
     {
         public ActionResult Index()
         {
+                   
             return View();
         }
 
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

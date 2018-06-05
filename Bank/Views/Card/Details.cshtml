@@ -1,0 +1,79 @@
+﻿@model Bank.Models.Card
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h2>Details</h2>
+
+<div>
+    <h4>Card</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+    </dl>
+</div>
+@if (Model.Transactions.Count > 0)
+{
+    <div>
+        <table>
+            <tr>
+                <th>Дата</th>
+                <th>Сумма</th>
+                <th>Описание</th>
+            </tr>
+            @foreach (var item in Model.Transactions)
+            {
+                <tr>
+                    <td>@item.OperationDate</td>
+                    <td>@item.Sum</td>
+                    <td>@item.Decription</td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
